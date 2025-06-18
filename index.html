@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
     <meta charset="utf-8" />
-    <title>Présentation Entreprise</title>
-    <link rel="stylesheet" href="css/style.css" />
+    <title>Soutenance Stage - Automatisation Analyse Vidéo</title>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css"
@@ -12,107 +11,278 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/moon.css"
     />
-
-    <script src="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js/plugin/notes/notes.js"></script>
+    <style>
+      .inline-logo {
+        height: 2em;
+        vertical-align: middle;
+      }
+      .small-text {
+        font-size: 0.8em;
+        color: #666;
+      }
+      .full-img {
+        width: 80%;
+      }
+    </style>
   </head>
   <body>
     <div class="reveal">
       <div class="slides">
+        <!-- Section : Présentation -->
         <section>
-          <section><h1>Présentation</h1></section>
           <section>
-            <h2>Stage de BUT Informatique</h2>
-            Automatisation des traitements de données
+            <h2>
+              Automatisation de l'analyse de données issues de la recherche
+              agronomique
+            </h2>
+            <h4>Maxime GOSSELIN • BUT Informatique</h4>
+            <p>UMET (INRAE) • 22 avril - 20 juin 2025</p>
+            <aside class="notes">Présentation simple</aside>
           </section>
+
           <section>
             <h2>Plan</h2>
             <ul>
-              <li>Contexte de la Mission</li>
+              <li>Entreprise</li>
+              <li>Contexte de la mission</li>
               <li>Objectif de la mission</li>
-              <li>Demo</li>
+              <li>Objectifs & enjeux</li>
+              <li>Développement & architecture</li>
+              <li>Démonstration</li>
+              <li>Conclusion & perspectives</li>
             </ul>
           </section>
         </section>
+
+        <!-- Section : Entreprise -->
         <section>
-          <section><h2>Contexte de la Mission</h2></section>
           <section>
-            Étude sur la mousse de café en fonction du lait. Financée par
-            <img
-              src="res/img/Danone-Logo.png"
-              alt="Danone-Logo"
-              class="inline-logo"
-            />
+            <img src="res/img/inrae_logo.png" alt="Logo INRAE" />
+            <p>
+              Institut national de recherche pour l'agriculture, l'alimentation
+              et l'environnement
+            </p>
+            <aside class="notes">
+              Organisme public français. + de 12 000 agents.
+            </aside>
           </section>
-          <section><h2>Pourquoi ?</h2></section>
+
           <section>
-            <h3>Equipe qui travail sur le projet :</h3>
+            <img src="res/img/umet_logo.png" alt="Logo UMET" />
+            <p>Unité Matériaux et Transformations</p>
+            <p>Site de Villeneuve d'Ascq</p>
+            <aside class="notes">
+              Unité Mixte de recherche <br />Placée sous tutelle de :
+              -Université de Lille -CNRS -INRAE -Centrale Lille
+            </aside>
+          </section>
+        </section>
+
+        <!-- Section : Contexte -->
+        <section>
+          <section><h2>Contexte de la mission</h2></section>
+          <section>
+            <p>Étude de la mousse de café en fonction du liquide</p>
+            <p>Financée par une entreprise agroalimentaire</p>
+            <aside class="notes">L'entreprise envoie des echantillons</aside>
+          </section>
+
+          <section>
+            <h2>Pourquoi ?</h2>
+            <ul>
+              <li>Améliorer la qualité de leurs cafés</li>
+              <li>Augmenter leurs ventes</li>
+              <li>Trouver une solution plus écologique</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Equipe qui travail sur le projet :</h2>
             <ul>
               <li>Julie Beaucé</li>
               <li>Anne-Laure Fameau</li>
               <li>Amandine Descamps</li>
             </ul>
+            <aside class="notes">Julie: technicienne</aside>
           </section>
+
           <section>
-            <h3>Machine DFA100</h3>
-            <img
-              src="res/img/machine.jpg"
-              alt="Image de la machine"
-              style="height: 10em"
-            />
+            <h2>Machine DFA100</h2>
+            <div style="display: flex; justify-content: center; gap: 20px">
+              <img
+                src="res/img/machine.jpg"
+                alt="Machine DFA 100"
+                style="max-height: 300px"
+              />
+              <img
+                src="res/img/dfa100_with_colonne.jpg"
+                alt="Machine DFA100 avec colonne"
+                style="max-height: 300px"
+              />
+            </div>
+            <aside class="notes">
+              Dynamic Foam Analyser <br />
+              Bien expliqué les capteurs (rouge:filme, bleu: Hmousse) <br />
+              Génère la mousse en agitant le liquide
+            </aside>
           </section>
         </section>
+
+        <!-- Section : Objectif de la mission -->
+
         <section>
-          <section><h2>Objectif de la Mission</h2></section>
+          <section><h2>Objectif de la mission</h2></section>
           <section>
-            <h3>Avant l'application</h3>
+            Automatiser ce traitement :
             <ul>
               <li>Récupérer la vidéo</li>
               <li>Séparer la vidéo avec FFmpeg</li>
               <li>Analyser chaque image avec une macro FiJi</li>
               <li>Stocker les résultats dans un fichier Excel</li>
               <li>
-                Combiner ces résultats avec les fichiers que la machine sortait
+                Combiner ces résultats avec les fichiers créer par la machine
               </li>
               <li>
                 Répéter l'opération pour chaque vidéo et faire une moyenne
               </li>
             </ul>
           </section>
-          <section>
-            <h3>Après l'application</h3>
-            <ul>
-              <li>Lancer l'application</li>
-              <li>Sélectionner les différentes videos</li>
-              <li>Saisir les paramètres utiles</li>
-              <li>Lancer l'analyse</li>
-            </ul>
-          </section>
         </section>
+
+        <!-- Section : Développement & architecture -->
         <section>
           <section>
-            <h3>Demo</h3>
-            <video controls autoplay width="800">
-              <source src="res/video/demo.mp4" type="video/mp4" />
-              Test
-            </video>
+            <h2>Outils & environnement</h2>
+            <ul>
+              <li>Python, venv & Git</li>
+              <li>OpenCV pour traitement image</li>
+              <li>Pandas pour gestion données</li>
+              <li>PyQt5 pour interface</li>
+            </ul>
+            <aside class="notes">
+              Importance du venv Opencv au lieu de FFmpeg
+            </aside>
+          </section>
+
+          <section>
+            <h2>Fonctionnement du programme</h2>
+            <ol>
+              <li>Analyse la première vidéo</li>
+              <li>
+                Combine le résultats avec le fichier excel associé à la vidéo
+              </li>
+              <li>Recommence pour chaque vidéo</li>
+              <li>Fusionne les résultats et fais une moyenne</li>
+            </ol>
+          </section>
+
+          <section>
+            <h2>Analyse Video</h2>
+            <img
+              src="res/img/pipeline_video.png"
+              alt="Pipeline De l'analyse video"
+              style="width: 50%"
+            />
           </section>
           <section>
-            <h3>Installation</h3>
-            https://github.com/lbouvier-inrae/DFA100/releases/download/Version-Finale/BubbleVideoAnalyzer.zip
+            <h2>Analyse Image</h2>
+            <img
+              src="res/img/schema_bulles.png"
+              alt="Traitement bulles"
+              class="full-img"
+            />
+            <aside class="notes">
+              Détailler chaque étape et montrer un exemple visuel.
+            </aside>
+          </section>
+
+          <section>
+            <h2>Architecture MVC</h2>
+            <img
+              src="img/schema_mvc.png"
+              alt="Architecture MVC"
+              class="full-img"
+            />
+            <aside class="notes">
+              Présenter brièvement le modèle, la vue et le contrôleur.
+            </aside>
+          </section>
+
+          <section>
+            <h2>Interface utilisateur</h2>
+            <img
+              src="img/interface.png"
+              alt="Interface PyQt5"
+              class="full-img"
+            />
+            <aside class="notes">
+              Montrer comment l’utilisateur configure et lance l’analyse.
+            </aside>
+          </section>
+
+          <section>
+            <h2>Performances</h2>
+            <p>2 vidéos de 20 images traitées en &lt; 2s</p>
+            <img
+              src="img/pipeline_video_analyse.png"
+              alt="Trace d'exécution"
+              class="full-img"
+            />
+            <aside class="notes">
+              Insister sur la rapidité et l’efficacité du programme.
+            </aside>
           </section>
         </section>
-        <section><h1>Merci</h1></section>
+
+        <!-- Section : Démonstration -->
+        <section>
+          <h2>Démonstration</h2>
+          <video controls width="800">
+            <source src="res/video/demo.mp4" type="video/mp4" />
+          </video>
+          <aside class="notes">
+            Lancer la vidéo et commenter chaque partie du logiciel.
+          </aside>
+        </section>
+
+        <!-- Section : Conclusion & perspectives -->
+        <section>
+          <section>
+            <h2>Perspectives</h2>
+            <ul>
+              <li>Open-source sur GitHub avec doc en anglais</li>
+              <li>Extensible à l’analyse de spores, autres images</li>
+              <li>Modularité et maintien facilitée</li>
+            </ul>
+            <aside class="notes">
+              Proposer pistes d’amélioration et collaborations futures.
+            </aside>
+          </section>
+
+          <section>
+            <h2>Bilan personnel</h2>
+            <ul>
+              <li>Compétences : OpenCV, Pandas, PyQt5</li>
+              <li>Gestion projet : autonomie, communication</li>
+              <li>Intérêt renforcé pour l’enseignement</li>
+            </ul>
+            <aside class="notes">
+              Partager ce que vous avez appris et vos motivations.
+            </aside>
+          </section>
+
+          <section>
+            <h2>Questions & discussion</h2>
+            <p>Merci pour votre attention !</p>
+            <aside class="notes">Inviter les questions, remercier.</aside>
+          </section>
+        </section>
       </div>
     </div>
-
-    <script src="node_modules/reveal.js/dist/reveal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.min.js"></script>
     <script>
-      // More info about initialization & config:
-      // - https://revealjs.com/initialization/
-      // - https://revealjs.com/config/
-      Reveal.initialize({
-        hash: true,
-      });
+      Reveal.initialize({ hash: true, center: true, plugins: [RevealNotes] });
     </script>
   </body>
 </html>
